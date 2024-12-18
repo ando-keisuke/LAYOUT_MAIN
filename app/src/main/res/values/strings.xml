@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LAYOUT_MAIN</string>
+    <string name="mapbox_access_token" translatable="false" >pk.eyJ1Ijoia2VpMjQyMDE3IiwiYSI6ImNtNGMzZ3RvZDA0NHMybG9tc3Nkdmc1cmgifQ.DR90bd8aEYSDzDXy5EHADA</string>
+
 </resources>
