@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(sheet);
 
         // neckHeightに相当する設定
-        bottomSheetBehavior.setPeekHeight(60); // peekHeightで初期表示時の高さを指定
+        bottomSheetBehavior.setPeekHeight(100); // peekHeightで初期表示時の高さを指定
 
         // BottomSheetの状態を設定
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
