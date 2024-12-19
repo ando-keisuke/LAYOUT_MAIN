@@ -6,6 +6,14 @@ import androidx.core.content.ContextCompat;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.mapbox.geojson.Point;
+import com.mapbox.maps.CameraOptions;
+import com.mapbox.maps.MapView;
+import com.mapbox.maps.MapboxMap;
 import android.Manifest;
 
 public class MainActivity extends AppCompatActivity {
