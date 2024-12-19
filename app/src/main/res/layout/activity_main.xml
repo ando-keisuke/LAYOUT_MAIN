@@ -22,6 +22,15 @@
             app:mapbox_cameraPitch="0.0"
             app:mapbox_cameraBearing="0.0" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:contentDescription="情報を追加する"
+            android:src="@drawable/icon_add"
+            android:layout_margin="16dp"
+            />
 
     </FrameLayout>
 
