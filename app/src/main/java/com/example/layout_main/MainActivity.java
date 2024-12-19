@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
             Log.d("debug", "ACCESS_FINE_LOCATION: Granted");
         }
 
+
+        // ---- MapBoxの初期設定 ----
         MapView mapView = findViewById(R.id.mapView);
 
         MapboxMap mapboxMap = mapView.getMapboxMap();
