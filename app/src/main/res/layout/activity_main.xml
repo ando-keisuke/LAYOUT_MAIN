@@ -32,6 +32,7 @@
             android:layout_margin="16dp"
             />
 
+    <include layout="@layout/component_bottom_sheet" />
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

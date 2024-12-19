@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/sheet"
+        android:layout_width="match_parent"
+        android:layout_height="537dp"
+        android:background="@drawable/bottom_sheet_rounded"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <View
+            android:id="@+id/bottomSheetBar"
+            android:layout_width="40dp"
+            android:layout_height="6dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bottom_sheet_bar"
+            android:scaleType="centerCrop" />
+
+        <FrameLayout
+            android:id="@+id/sheet_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Bottom Sheet"
+                android:textSize="24sp" />
+        </FrameLayout>
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!--メモ-->
+    <!--    https://www.youtube.com/watch?v=3vMtHKniOqI-->
+    <!--    https://qiita.com/kurramkurram/items/32b5b208c2ddb6ff4f51-->
+    <!--    https://qiita.com/mmmmk/items/4005836363eace5ca4fb-->
