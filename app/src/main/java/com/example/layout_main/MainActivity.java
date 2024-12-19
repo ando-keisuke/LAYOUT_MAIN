@@ -45,17 +45,22 @@ public class MainActivity extends AppCompatActivity {
 
         MapboxMap mapboxMap = mapView.getMapboxMap();
 
-        mapboxMap.loadStyle("mapbox://styles/kei242017/cm4u0pmti003z01sm7k001a71");
+        mapboxMap.loadStyle("mapbox://styles/kei242017/cm4u0pmti003z01sm7k001a71", style -> {
+            // Mapのスタイルがロードされた後の処理
+            Log.d("debug", "Map style loaded");
+        });
 
-        mapboxMap.setCamera(
-                new CameraOptions.Builder()
-                        .center(Point.fromLngLat(136.881537,35.170915 ))
-                        .pitch(0.0)
-                        .zoom(8.0)
-                        .bearing(0.0)
-                        .build()
+//        mapboxMap.setCamera(
+//                new CameraOptions.Builder()
+//                        .center(Point.fromLngLat(136.881537,35.170915 ))
+//                        .pitch(0.0)
+//                        .zoom(8.0)
+//                        .bearing(0.0)
+//                        .build()
+//
+//        );
 
-        );
+
 
         // ---- ボトムシートの初期設定 ----
         // BottomSheetの参照を取得
