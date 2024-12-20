@@ -12,29 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <com.mapbox.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapbox_cameraTargetLat="39.5"
-            app:mapbox_cameraTargetLng="-98.0"
-            app:mapbox_cameraZoom="2.0"
-            app:mapbox_cameraPitch="0.0"
-            app:mapbox_cameraBearing="0.0"
-            app:mapbox_locationComponentEnabled="true"
-            />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:contentDescription="情報を追加する"
-            android:src="@drawable/icon_add"
-            android:layout_margin="16dp"
-            />
-
-    <include layout="@layout/component_bottom_sheet" />
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
