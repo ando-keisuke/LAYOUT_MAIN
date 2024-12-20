@@ -16,10 +16,10 @@ import com.mapbox.maps.CameraOptions;
 import com.mapbox.maps.MapView;
 import com.mapbox.maps.MapboxMap;
 
-public class homeActivity extends Fragment {
+public class HomeActivity extends Fragment {
     View rootView;
 
-    public homeActivity(){
+    public HomeActivity(){
         // require a empty public constructor
 
     }
