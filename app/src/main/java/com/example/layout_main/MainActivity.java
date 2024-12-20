@@ -2,21 +2,24 @@ package com.example.layout_main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.Manifest;
 
 import com.example.layout_main.activity.SettingActivity;
 import com.example.layout_main.activity.TimelineActivity;
-import com.example.layout_main.activity.homeActivity;
+import com.example.layout_main.activity.HomeActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         Log.i("transition","home");
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,new homeActivity());
+        fragmentTransaction.replace(R.id.fragment_container,new HomeActivity());
         fragmentTransaction.commit();
 
         initBottomNavBar();
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 if (itemID == R.id.nav_home) {
                     Log.i("transition","home");
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container,new homeActivity());
+                    fragmentTransaction.replace(R.id.fragment_container,new HomeActivity());
                     fragmentTransaction.commit();
 
                     return true;
@@ -81,19 +84,19 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-//        // 位置情報の権限を求める
-//        int LOCATION_PERMISSION_REQUEST_CODE = 100;
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-//                != PackageManager.PERMISSION_GRANTED) {
-//            // 権限がない場合、リクエストを送信
-//            Log.d("debug","Request ACCESS_FINE_LOCATION");
-//
-//            ActivityCompat.requestPermissions(this,
-//                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-//                    LOCATION_PERMISSION_REQUEST_CODE);
-//        } else {
-//            // 権限がすでに付与されている場合
-//            Log.d("debug", "ACCESS_FINE_LOCATION: Granted");
-//        }
+        // 位置情報の権限を求める
+        int LOCATION_PERMISSION_REQUEST_CODE = 100;
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // 権限がない場合、リクエストを送信
+            Log.d("debug","Request ACCESS_FINE_LOCATION");
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    LOCATION_PERMISSION_REQUEST_CODE);
+        } else {
+            // 権限がすでに付与されている場合
+            Log.d("debug", "ACCESS_FINE_LOCATION: Granted");
+        }
     }
 }
