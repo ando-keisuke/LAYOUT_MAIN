@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.layout_main.activity.SettingActivity;
+import com.example.layout_main.activity.TimelineActivity;
+import com.example.layout_main.activity.homeActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 

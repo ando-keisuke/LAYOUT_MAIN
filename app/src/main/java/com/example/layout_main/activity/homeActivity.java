@@ -1,4 +1,4 @@
-package com.example.layout_main;
+package com.example.layout_main.activity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.layout_main.R;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.mapbox.geojson.Point;
 import com.mapbox.maps.CameraOptions;

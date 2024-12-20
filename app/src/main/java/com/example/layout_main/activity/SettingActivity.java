@@ -1,4 +1,4 @@
-package com.example.layout_main;
+package com.example.layout_main.activity;
 
 
 
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.example.layout_main.R;
 
 public class SettingActivity extends Fragment {
     View rootView;
