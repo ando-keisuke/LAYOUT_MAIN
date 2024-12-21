@@ -48,6 +48,7 @@ public class HomeActivity extends Fragment {
             Log.d("debug", "Map style loaded");
         });
 
+
         mapboxMap.setCamera(
                 new CameraOptions.Builder()
                         .center(Point.fromLngLat(136.881537,35.170915 ))

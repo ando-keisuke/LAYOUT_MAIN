@@ -41,5 +41,6 @@ dependencies {
 
     implementation 'com.mapbox.maps:android:11.8.1'
     implementation 'com.google.android.gms:play-services-location:21.3.0'
+    implementation 'com.mapbox.plugin:maps-animation:11.9.0'
 
 }
