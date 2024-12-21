@@ -34,10 +34,20 @@ public class HomeActivity extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        inithialize();  // onViewCreatedで初期化を呼び出す
+        initialize();  // onViewCreatedで初期化を呼び出す
     }
 
-    private void inithialize() {
+
+    public void setCameraToCurrentLocation() {
+        // mapViewがnullの場合は初期化
+        if (mapboxMap == null) {
+            MapView mapView = rootView.findViewById(R.id.mapView);
+        }
+
+        final Cancelable cancelable = CameraAnimationsUtils.easeTo(mapView.getMapboxMap(),
+                new CameraOptions.builder().center(Point.fromLngLat(136.881537,35.170915)).zoom(8.0).build(), 1000);
+    }
+    private void initialize() {
         // ---- MapBoxの初期設定 ----
         MapView mapView = rootView.findViewById(R.id.mapView);
 
