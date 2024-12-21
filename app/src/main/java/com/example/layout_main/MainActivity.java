@@ -26,10 +26,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // 初期画面をhomeに設定する
-        FragmentManager fragmentManager = getSupportFragmentManager();
         Log.i("transition","home");
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // activity_mainのframeLayout: fragment_containerにHomeActivityを設定
         fragmentTransaction.replace(R.id.fragment_container,new HomeActivity());
+        // 変更を反映
         fragmentTransaction.commit();
 
         initBottomNavBar();
