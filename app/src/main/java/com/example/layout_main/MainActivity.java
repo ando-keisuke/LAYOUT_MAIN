@@ -20,6 +20,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
+    // フラグメントマネージャー各メソッドで使いまわ焦るようにする
+    private FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +31,12 @@ public class MainActivity extends AppCompatActivity {
         // 初期画面をhomeに設定する
         Log.i("transition","home");
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        // フラグメントマネージャーを初期化
+        fragmentManager = getSupportFragmentManager();
 
+
+        // -----初期画面をHomeに設定する-----
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         // activity_mainのframeLayout: fragment_containerにHomeActivityを設定
         fragmentTransaction.replace(R.id.fragment_container,new HomeActivity());
         // 変更を反映
@@ -49,38 +55,31 @@ public class MainActivity extends AppCompatActivity {
                 // itemIDはメニューのとこで設定したアイコンごとのid
                 int itemID = item.getItemId();
 
-                // 画面遷移を設定する
-                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 // home
                 if (itemID == R.id.nav_home) {
                     Log.i("transition","home");
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container,new HomeActivity());
                     fragmentTransaction.commit();
 
                     return true;
                 }
-
                 // timeline
                 if (itemID == R.id.nav_timeline) {
                     Log.i("transition","timeline");
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container,new TimelineActivity());
                     fragmentTransaction.commit();
 
                     return true;
-
                 }
                 // 設定
                 if (itemID == R.id.nav_setting) {
                     Log.i("transition","setting");
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container,new SettingActivity());
                     fragmentTransaction.commit();
 
                     return true;
-
                 }
 
                 // 失敗した場合
@@ -88,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
         // 位置情報の権限を求める
         int LOCATION_PERMISSION_REQUEST_CODE = 100;
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
