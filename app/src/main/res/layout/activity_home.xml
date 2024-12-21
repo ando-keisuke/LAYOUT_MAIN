@@ -12,30 +12,31 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <com.mapbox.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapbox_cameraTargetLat="39.5"
-            app:mapbox_cameraTargetLng="-98.0"
-            app:mapbox_cameraZoom="2.0"
-            app:mapbox_cameraPitch="0.0"
-            app:mapbox_cameraBearing="0.0"
-            app:mapbox_locationComponentEnabled="true"
-            />
+                <com.mapbox.maps.MapView
+                    android:id="@+id/mapView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:mapbox_cameraTargetLat="39.5"
+                    app:mapbox_cameraTargetLng="-98.0"
+                    app:mapbox_cameraZoom="2.0"
+                    app:mapbox_cameraPitch="0.0"
+                    app:mapbox_cameraBearing="0.0"
+                    app:mapbox_locationComponentEnabled="true"
+                    />
 
-        <!-- 2つ目のフローティングボタン -->
+        <!-- 1つ目のフローティングボタン -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_current_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:contentDescription="現在地にカメラをセット"
-            android:src="@drawable/icon_mylocation"
+            android:src="@drawable/icon_location_searching"
             android:layout_marginBottom="96dp"
             android:layout_marginEnd="16dp"
             />
 
+        <!-- 2つ目のフローティングボタン -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fab_add"
                     android:layout_width="wrap_content"
