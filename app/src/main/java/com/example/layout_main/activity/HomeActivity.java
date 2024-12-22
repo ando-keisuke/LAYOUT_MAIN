@@ -1,5 +1,6 @@
 package com.example.layout_main.activity;
 
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,17 +8,34 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.layout_main.R;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.mapbox.bindgen.Expected;
+import com.mapbox.common.Cancelable;
+import com.mapbox.common.location.DeviceLocationProvider;
+import com.mapbox.common.location.GetLocationCallback;
+import com.mapbox.common.location.Location;
+import com.mapbox.common.location.LocationError;
+import com.mapbox.common.location.LocationService;
 import com.mapbox.geojson.Point;
 import com.mapbox.maps.CameraOptions;
 import com.mapbox.maps.MapView;
 import com.mapbox.maps.MapboxMap;
+import com.mapbox.maps.plugin.animation.CameraAnimationsPlugin;
+import com.mapbox.maps.plugin.animation.CameraAnimationsUtils;
+import com.mapbox.maps.plugin.animation.MapAnimationOptions;
+import com.mapbox.common.location.LocationProvider;
+import com.mapbox.common.location.LocationServiceFactory;
 
 public class HomeActivity extends Fragment {
     View rootView;
+
+    MapView mapView;
+    MapboxMap mapboxMap;
 
     public HomeActivity(){
         // require a empty public constructor
@@ -44,14 +62,38 @@ public class HomeActivity extends Fragment {
             MapView mapView = rootView.findViewById(R.id.mapView);
         }
 
-        final Cancelable cancelable = CameraAnimationsUtils.easeTo(mapView.getMapboxMap(),
-                new CameraOptions.builder().center(Point.fromLngLat(136.881537,35.170915)).zoom(8.0).build(), 1000);
+        LocationService locationService = LocationServiceFactory.getOrCreate();
+
+        LocationProvider locationProvider;
+        Expected<LocationError, DeviceLocationProvider> result = locationService.getDeviceLocationProvider(null);
+
+        if (result.isValue()) {
+            locationProvider = result.getValue();
+            locationProvider.getLastLocation(new GetLocationCallback() {
+                @Override
+                public void run(@Nullable Location location) {
+                    if (location != null) {
+                        CameraAnimationsPlugin camera = CameraAnimationsUtils.getCamera(mapView);
+                        Cancelable cancelable = camera.flyTo(
+                                new CameraOptions.Builder()
+                                        .center(Point.fromLngLat(location.getLongitude(), location.getLatitude()))
+                                        .build(),
+                                new MapAnimationOptions.Builder()
+                                        .duration(1000)
+                                        .build(),
+                                null
+                        );
+                    }
+                }
+            });
+        }
     }
+
     private void initialize() {
         // ---- MapBoxの初期設定 ----
-        MapView mapView = rootView.findViewById(R.id.mapView);
+        mapView = rootView.findViewById(R.id.mapView);
 
-        MapboxMap mapboxMap = mapView.getMapboxMap();
+        mapboxMap = mapView.getMapboxMap();
 
         mapboxMap.loadStyle("mapbox://styles/kei242017/cm4u0pmti003z01sm7k001a71", style -> {
             // Mapのスタイルがロードされた後の処理
@@ -69,8 +111,6 @@ public class HomeActivity extends Fragment {
 
         );
 
-
-
         // ---- ボトムシートの初期設定 ----
         // BottomSheetの参照を取得
         View sheet = rootView.findViewById(R.id.sheet);
@@ -84,5 +124,10 @@ public class HomeActivity extends Fragment {
         // BottomSheetの状態を設定
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
 
+
+        FloatingActionButton fab_current_location = rootView.findViewById(R.id.fab_current_location);
+        fab_current_location.setOnClickListener(v -> {
+            setCameraToCurrentLocation();
+        });
     }
 }
